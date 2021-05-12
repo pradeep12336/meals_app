@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:udemy_hotel/dummy_data.dart';
+import 'package:udemy_hotel/models/meals.dart';
 import 'package:udemy_hotel/widgets/meals_item.dart';
 
 class CategoryScreenMeals extends StatelessWidget {
   static const routeName = '/categories-meals';
-  // final String CategoryTitle;
+  final List<Meals> availableMeals;
+
+  CategoryScreenMeals({this.availableMeals}); // final String CategoryTitle;
   // final String CategoryId;
   //
   // CategoryScreenMeals({
@@ -18,7 +20,7 @@ class CategoryScreenMeals extends StatelessWidget {
     final CategoryId = routeArgs['id'];
     final CategoryTitle = routeArgs['title'];
     print('category id is${CategoryId}');
-    final CatMeals = Dummy_Meals.where((meal) {
+    final CatMeals = availableMeals.where((meal) {
       return meal.categories.contains(CategoryId);
     }).toList();
     return Scaffold(
